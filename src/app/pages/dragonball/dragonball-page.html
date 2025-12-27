@@ -1,0 +1,51 @@
+<h1>Dragon Ball Page</h1>
+
+<hr />
+
+<section class="row">
+  <div class="col-12 col-sm-6">
+    <h3>Agregar nuevo personaje</h3>
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Nombre del personaje"
+      [value]="name()"
+      (change)="name.set(txtName.value)"
+      (input)="name.set(txtName.value)"
+      #txtName
+    />
+    <input
+      type="number"
+      class="form-control mt-2"
+      placeholder="Poder del personaje"
+      [value]="power()"
+      (change)="setPower(txtPower.value)"
+      (input)="setPower(txtPower.value)"
+      #txtPower
+    />
+    <button class="btn btn-primary mt-2" (click)="addCharacter()">Agregar</button>
+  </div>
+
+  <div class="row col-12 col-sm-6">
+    <h3>Personajes:</h3>
+    <ul class="list-group">
+      @for (character of characters(); track character.id; let idx = $index) { @if (character.power
+      > 500) {
+      <li class="list-group-item">
+        <span>{{ idx + 1 }}. </span>
+        <span>{{ character.name }}</span> -
+        <strong
+          [class.text-danger]="character.power > 9000"
+          [class.text-warning]="character.power < 9000"
+          [class.text-success]="character.power == 9000"
+          >{{ character.power }}</strong
+        >
+      </li>
+      } @else {
+      <li class="list-group-item">
+        <span>Aca no vale la pena ver nada</span>
+      </li>
+      } }
+    </ul>
+  </div>
+</section>

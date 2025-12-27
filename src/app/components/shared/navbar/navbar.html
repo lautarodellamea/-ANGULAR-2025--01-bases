@@ -1,0 +1,31 @@
+<style>
+  nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: #212121;
+    color: #fff;
+    padding: 10px;
+  }
+  nav a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  nav a.active {
+    color: #007bff;
+  }
+</style>
+
+<nav>
+  <!-- el routerLinkActiveOptions es para que el active se active solo en la ruta exacta -->
+  <!-- por ejemplo si tenemos la ruta /hero/123 la ruta /hero no sera active cuando estemos en /hero/123 -->
+  <!-- pero si quisieramos que la ruta /hero fuera active cuando estemos en /hero/123 no deberiamos usar el exact: true -->
+  <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+    >Counter</a
+  >
+
+  <!-- de esta manera podemos pasarle parametros a la ruta usando un array -->
+  <a [routerLink]="['/hero']" [routerLinkActive]="['active']">Hero</a>
+  <a [routerLink]="['/dragonball']" [routerLinkActive]="['active']">Dragon Ball</a>
+  <a [routerLink]="['/dragonball-super']" [routerLinkActive]="['active']">Dragon Ball Super</a>
+</nav>
